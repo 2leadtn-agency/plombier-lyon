@@ -1,12 +1,272 @@
 ---
+import Layout from "../layouts/Layout.astro";
+
+const phone = "06 12 34 56 78";
+const phoneHref = "tel:+33612345678";
+const whatsappHref = "https://wa.me/33612345678";
+
+const services = [
+  {
+    title: "Dépannage urgent",
+    desc: "Intervention rapide en cas de fuite, panne ou urgence, 7j/7 partout à Lyon.",
+    icon: "wrench",
+  },
+  {
+    title: "Installation sanitaire",
+    desc: "Pose et remplacement de chauffe-eau, robinetterie, WC et sanitaires.",
+    icon: "droplet",
+  },
+  {
+    title: "Rénovation salle de bain",
+    desc: "Conception et rénovation complète de votre salle de bain, clé en main.",
+    icon: "home",
+  },
+  {
+    title: "Détection de fuites",
+    desc: "Recherche non destructive de fuites d'eau pour éviter les dégâts.",
+    icon: "search",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Intervention rapide et professionnelle. Je recommande !",
+    name: "Marie L.",
+    loc: "Lyon 3e",
+  },
+  {
+    quote: "Fuite réparée en moins d'une heure. Excellent service.",
+    name: "Thomas B.",
+    loc: "Lyon 6e",
+  },
+  {
+    quote: "Prix honnête et travail soigné. Merci !",
+    name: "Sophie M.",
+    loc: "Villeurbanne",
+  },
+];
 ---
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apercu</title>
-</head>
-<body>
-  <h1>Apercu en cours de construction</h1>
-</body>
-</html>
+
+<Layout>
+  <!-- NAV -->
+  <header class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+          </svg>
+        </span>
+        Dupont Plomberie
+      </a>
+      <a href={phoneHref} class="nav-call">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span class="nav-call-text">{phone}</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-badge"><span class="dot"></span> Disponible 7j/7 à Lyon</span>
+      <h1>Votre plombier de confiance à <span>Lyon</span></h1>
+      <p class="hero-subtitle">Dépannage urgent, installation, rénovation. Disponible 7j/7.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-accent">Demander un devis gratuit</a>
+        <a href={phoneHref} class="btn btn-outline">Appeler maintenant</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>20 ans</strong>
+          <span>d'expérience</span>
+        </div>
+        <div class="hero-stat">
+          <strong>500+</strong>
+          <span>clients satisfaits</span>
+        </div>
+        <div class="hero-stat">
+          <strong>7j/7</strong>
+          <span>disponibilité</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Nos services</span>
+        <h2 class="section-title">Une expertise complète en plomberie</h2>
+        <p class="section-subtitle">Du dépannage express à la rénovation complète, nous couvrons tous vos besoins.</p>
+      </div>
+      <div class="services-grid">
+        {
+          services.map((s) => (
+            <div class="service-card">
+              <div class="service-icon">
+                {s.icon === "wrench" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                  </svg>
+                )}
+                {s.icon === "droplet" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.69s-7 7.44-7 11.31a7 7 0 0 0 14 0c0-3.87-7-11.31-7-11.31z" />
+                  </svg>
+                )}
+                {s.icon === "home" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9.5 12 3l9 6.5" />
+                    <path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10" />
+                  </svg>
+                )}
+                {s.icon === "search" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="m21 21-4.3-4.3" />
+                  </svg>
+                )}
+              </div>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <span class="section-label">À propos</span>
+      <h2 class="section-title">Plus de 20 ans d'expérience au service des Lyonnais</h2>
+      <p class="about-text">
+        Depuis deux décennies, Dupont Plomberie accompagne les particuliers et professionnels de Lyon
+        et de son agglomération avec un savoir-faire reconnu, un travail soigné et des interventions
+        rapides. Notre priorité : votre satisfaction et votre tranquillité.
+      </p>
+      <div class="about-stats">
+        <div class="about-stat">
+          <strong>20 ans</strong>
+          <span>D'EXPÉRIENCE</span>
+        </div>
+        <div class="about-stat">
+          <strong>500+</strong>
+          <span>CLIENTS</span>
+        </div>
+        <div class="about-stat">
+          <strong>7j/7</strong>
+          <span>DISPONIBLE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="avis">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Avis clients</span>
+        <h2 class="section-title">Ce que disent nos clients</h2>
+        <p class="section-subtitle">La satisfaction de nos clients lyonnais, notre meilleure référence.</p>
+      </div>
+      <div class="testimonials-grid">
+        {
+          testimonials.map((t) => (
+            <div class="testimonial-card">
+              <div class="stars">
+                {Array.from({ length: 5 }).map(() => (
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </div>
+              <p class="testimonial-quote">"{t.quote}"</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">{t.name.charAt(0)}</div>
+                <div>
+                  <div class="author-name">{t.name}</div>
+                  <div class="author-loc">{t.loc}</div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-head">
+        <span class="section-label" style="background: rgba(255,199,0,0.15); color: var(--color-accent);">Contact</span>
+        <h2 class="section-title">Besoin d'un plombier à Lyon ?</h2>
+        <p class="section-subtitle">Contactez-nous dès maintenant pour un devis gratuit et sans engagement.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div>
+            <div class="contact-card-label">Adresse</div>
+            <div class="contact-card-value">12 rue de la République, 69001 Lyon</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </div>
+          <div>
+            <div class="contact-card-label">Téléphone</div>
+            <div class="contact-card-value">{phone}</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-actions">
+        <a href={phoneHref} class="btn btn-accent">Appeler {phone}</a>
+        <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="btn btn-outline">Écrire sur WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <a href="#" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+          </svg>
+        </span>
+        Dupont Plomberie
+      </a>
+      <p class="footer-copy">© 2026 Dupont Plomberie</p>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a
+    href={whatsappHref}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="Contacter sur WhatsApp"
+  >
+    <svg viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.822.487 3.53 1.338 5.003L2.05 22l5.13-1.257A9.94 9.94 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.114a8.09 8.09 0 0 1-4.127-1.128l-.296-.176-3.048.747.775-3.02-.192-.31A8.096 8.096 0 1 1 12.001 20.114z" />
+    </svg>
+  </a>
+</Layout>
